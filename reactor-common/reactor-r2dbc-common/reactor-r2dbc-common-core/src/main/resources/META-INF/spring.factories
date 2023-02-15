@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormConfiguration,\
+  com.cn.xiguaapp.r2dbc.common.core.configuration.JdbcSqlExecutorConfiguration,\
+  com.cn.xiguaapp.r2dbc.common.core.configuration.R2dbcSqlExecutorConfiguration,\
+  com.cn.xiguaapp.r2dbc.common.core.configuration.CommonWebFluxConfiguration

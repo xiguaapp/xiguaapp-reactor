@@ -1,0 +1,140 @@
+package com.cn.xiguaapp.r2dbc.common.core.service;
+
+import com.cn.xiguapp.common.core.gen.IDGenerator;
+import com.cn.xiguapp.common.core.gen.RandomUtil;
+import com.cn.xiguaapp.r2dbc.common.api.crud.entity.QueryParamEntity;
+import com.cn.xiguaapp.r2dbc.common.api.crud.entity.TreeSortSupportEntity;
+import com.cn.xiguaapp.r2dbc.common.api.crud.entity.TreeSupportEntity;
+import com.cn.xiguaapp.r2dbc.orm.rdb.mapping.defaults.SaveResult;
+import org.reactivestreams.Publisher;
+import org.springframework.util.StringUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+/**
+ * @author xiguaapp
+ * @desc 树形结构支持
+ * @param <E> {@link TreeSortSupportEntity}
+ * @param <K> id
+ * @since 1.0 16:55
+ */
+public interface ReactiveTreeSortEntityService <E extends TreeSortSupportEntity<K>, K>
+        extends ReactiveCrudService<E, K> {
+    default Mono<List<E>> queryResultToTree(Mono<? extends QueryParamEntity> paramEntity) {
+        return paramEntity.flatMap(this::queryResultToTree);
+    }
+
+    default Mono<List<E>> queryResultToTree(QueryParamEntity paramEntity) {
+        return query(paramEntity)
+                .collectList()
+                .map(list -> TreeSupportEntity.list2tree(list,
+                        this::setChildren,
+                        this::createRootNodePredicate));
+    }
+
+    default Mono<List<E>> queryIncludeChildrenTree(QueryParamEntity paramEntity) {
+        return queryIncludeChildren(paramEntity)
+                .collectList()
+                .map(list -> TreeSupportEntity.list2tree(list,
+                        this::setChildren,
+                        this::createRootNodePredicate));
+    }
+
+    default Flux<E> queryIncludeChildren(Collection<K> idList) {
+        return findById(idList)
+                .flatMap(e -> createQuery()
+                        .where()
+                        .like$("path", e.getPath())
+                        .fetch());
+    }
+
+    default Flux<E> queryIncludeChildren(QueryParamEntity queryParam) {
+        return query(queryParam)
+                .flatMap(e -> createQuery()
+                        .where()
+                        .like$("path", e.getPath())
+                        .fetch());
+    }
+
+    @Override
+    default Mono<Integer> insert(Publisher<E> entityPublisher) {
+        return insertBatch(Flux.from(entityPublisher).collectList());
+    }
+
+    @Override
+    default Mono<Integer> insertBatch(Publisher<? extends Collection<E>> entityPublisher) {
+        return this.getRepository()
+                .insertBatch(Flux.from(entityPublisher)
+                        .flatMap(Flux::fromIterable)
+                        .flatMap(this::applyTreeProperty)
+                        .flatMap(e -> Flux.fromIterable(TreeSupportEntity.expandTree2List(e, getIDGenerator())))
+                        .collectList());
+    }
+
+    default Mono<E> applyTreeProperty(E ele) {
+        if (StringUtils.hasText(ele.getPath()) ||
+                StringUtils.isEmpty(ele.getParentId())) {
+            return Mono.just(ele);
+        }
+        return findById(ele.getParentId())
+                .doOnNext(parent -> ele.setPath(parent.getPath() + "-" + RandomUtil.randomChar(4)))
+                .thenReturn(ele);
+    }
+
+    @Override
+    default Mono<SaveResult> save(Publisher<E> entityPublisher) {
+        return this.getRepository()
+                .save(Flux.from(entityPublisher)
+                        .flatMap(this::applyTreeProperty)
+                        //把树结构平铺
+                        .flatMap(e -> Flux.fromIterable(TreeSupportEntity.expandTree2List(e, getIDGenerator())))
+                );
+    }
+
+    @Override
+    default Mono<Integer> updateById(K id, Mono<E> entityPublisher) {
+        return save(entityPublisher
+                .doOnNext(e -> e.setId(id)))
+                .map(SaveResult::getTotal);
+    }
+
+    @Override
+    default Mono<Integer> deleteById(Publisher<K> idPublisher) {
+        return findById(Flux.from(idPublisher))
+                .flatMap(e -> createDelete()
+                        .where()
+                        .like$(e::getPath)
+                        .execute())
+                .collect(Collectors.summingInt(Integer::intValue));
+    }
+
+    IDGenerator<K> getIDGenerator();
+
+    void setChildren(E entity, List<E> children);
+
+    default List<E> getChildren(E entity) {
+        return entity.getChildren();
+    }
+
+    default Predicate<E> createRootNodePredicate(TreeSupportEntity.TreeHelper<E, K> helper) {
+        return node -> {
+            if (isRootNode(node)) {
+                return true;
+            }
+            //有父节点,但是父节点不存在
+            if (!StringUtils.isEmpty(node.getParentId())) {
+                return helper.getNode(node.getParentId()) == null;
+            }
+            return false;
+        };
+    }
+
+    default boolean isRootNode(E entity) {
+        return StringUtils.isEmpty(entity.getParentId()) || "-1".equals(String.valueOf(entity.getParentId()));
+    }
+}

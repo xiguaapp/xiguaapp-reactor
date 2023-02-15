@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.cn.xiguaapp.pay.spring.boot.autoconfiguration.PayAutoConfiguration

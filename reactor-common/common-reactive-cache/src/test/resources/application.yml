@@ -1,0 +1,15 @@
+#spring:
+#  redis:
+#    host: ip
+#    password: 123456.qq
+#    port: 6379
+xiguaapp:
+  cache:
+    redis:
+      local-cache-type: caffeine
+    type: redis
+spring:
+  redis:
+    host: ip
+    port: 6379
+    password: 123456.qq

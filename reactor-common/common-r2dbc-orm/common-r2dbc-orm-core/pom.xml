@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~        Copyright (C) <2018-2028>  <@author: xiguaapp @date: @today>
+  ~        Send: 1125698980@qq.com
+  ~        This program is free software: you can redistribute it and/or modify
+  ~        it under the terms of the GNU General Public License as published by
+  ~        the Free Software Foundation, either version 3 of the License, or
+  ~        (at your option) any later version.
+  ~        This program is distributed in the hope that it will be useful,
+  ~        but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~        GNU General Public License for more details.
+  ~        You should have received a copy of the GNU General Public License
+  ~        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>common-r2dbc-orm</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>3.1.1-RED-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>common-r2dbc-orm-core</artifactId>
+    <description>orm核心包 提供dsl封装先</description>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.hiwepy</groupId>
+            <artifactId>webflux-swagger2-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

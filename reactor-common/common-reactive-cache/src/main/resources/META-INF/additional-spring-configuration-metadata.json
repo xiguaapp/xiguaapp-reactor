@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "xiguaapp.cache.redis.local-cache-type",
+      "type": "java.lang.String",
+      "description": "缓存类型."
+    },
+    {
+      "name": "xiguaapp.cache.type",
+      "type": "java.lang.String",
+      "description": "缓存类型."
+    }
+  ] }

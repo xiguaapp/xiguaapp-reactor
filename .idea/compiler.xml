@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common-r2dbc-orm-core" />
+        <module name="pay-java-alipay" />
+        <module name="datagrap-sqltemplate" />
+        <module name="datagrap-dbms" />
+        <module name="reactor-r2dbc-common-api" />
+        <module name="pay-java-union" />
+        <module name="datagrap-cbr" />
+        <module name="datagrap-core" />
+        <module name="common-datasource-jta" />
+        <module name="pay-java-wx" />
+        <module name="pay-java-yiji" />
+        <module name="pay-java-common" />
+        <module name="reactor-simple" />
+        <module name="reactor-open" />
+        <module name="reactor-sba" />
+        <module name="common-reactive-cache" />
+        <module name="datagrap-dbms-server" />
+        <module name="common-test" />
+        <module name="system" />
+        <module name="job-api" />
+        <module name="pay-java-wx-youdian" />
+        <module name="reactor-msg" />
+        <module name="common-r2dbc" />
+        <module name="common-core" />
+        <module name="xiguaapp-pay-spring-boot-starter" />
+        <module name="system-api" />
+        <module name="bpm-msg" />
+        <module name="common-gateway" />
+        <module name="common-thrid-auth" />
+        <module name="xiguaapp-pay-spring-boot-starter-test" />
+        <module name="common-datasource-api" />
+        <module name="msg-api" />
+        <module name="pay-java-zdemo" />
+        <module name="xiguaapp-pay-spring-boot" />
+        <module name="datagrap-interface" />
+        <module name="reactor-gateway" />
+        <module name="reactor-bpm" />
+        <module name="common-server" />
+        <module name="pay-java-paypal" />
+        <module name="common-r2dbc-orm-rdb" />
+        <module name="xiguaapp-pay-spring-boot-configuer" />
+        <module name="pay-java-baidu" />
+        <module name="datagrap-whtc" />
+        <module name="reactor-r2dbc-common-core" />
+        <module name="common-datasource-web" />
+        <module name="pay-java-fuiou" />
+        <module name="common-oauth-core" />
+        <module name="common-starter" />
+        <module name="datagrap-api" />
+        <module name="pay-java-payoneer" />
+        <module name="reactor-job" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bpm-msg" target="1.8" />
+      <module name="commom-dependencies" target="1.5" />
+      <module name="common-api" target="1.8" />
+      <module name="common-core" target="1.8" />
+      <module name="common-datasource" target="1.8" />
+      <module name="common-datasource-api" target="1.8" />
+      <module name="common-datasource-jta" target="1.8" />
+      <module name="common-datasource-web" target="1.8" />
+      <module name="common-gateway" target="1.8" />
+      <module name="common-oauth" target="1.8" />
+      <module name="common-oauth-core" target="1.8" />
+      <module name="common-oauth-parent" target="1.8" />
+      <module name="common-pay" target="1.8" />
+      <module name="common-r2dbc" target="1.8" />
+      <module name="common-r2dbc-orm" target="1.8" />
+      <module name="common-r2dbc-orm-core" target="1.8" />
+      <module name="common-r2dbc-orm-rdb" target="1.8" />
+      <module name="common-reactive-cache" target="1.8" />
+      <module name="common-server" target="1.8" />
+      <module name="common-starter" target="1.8" />
+      <module name="common-test" target="1.8" />
+      <module name="common-thrid-auth" target="1.8" />
+      <module name="datagrap" target="1.8" />
+      <module name="datagrap-api" target="1.8" />
+      <module name="datagrap-cbr" target="1.8" />
+      <module name="datagrap-common" target="1.8" />
+      <module name="datagrap-core" target="1.8" />
+      <module name="datagrap-dbms" target="1.8" />
+      <module name="datagrap-dbms-server" target="1.8" />
+      <module name="datagrap-interface" target="1.8" />
+      <module name="datagrap-sqltemplate" target="1.8" />
+      <module name="datagrap-whtc" target="1.8" />
+      <module name="job-api" target="1.8" />
+      <module name="msg-api" target="1.8" />
+      <module name="pay-java-alipay" target="1.8" />
+      <module name="pay-java-baidu" target="1.8" />
+      <module name="pay-java-common" target="1.8" />
+      <module name="pay-java-core" target="1.8" />
+      <module name="pay-java-fuiou" target="1.8" />
+      <module name="pay-java-payoneer" target="1.8" />
+      <module name="pay-java-paypal" target="1.8" />
+      <module name="pay-java-union" target="1.8" />
+      <module name="pay-java-wx" target="1.8" />
+      <module name="pay-java-wx-youdian" target="1.8" />
+      <module name="pay-java-yiji" target="1.8" />
+      <module name="pay-java-zdemo" target="1.8" />
+      <module name="reactor-bpm" target="1.8" />
+      <module name="reactor-common" target="1.8" />
+      <module name="reactor-gateway" target="1.8" />
+      <module name="reactor-job" target="1.8" />
+      <module name="reactor-msg" target="1.8" />
+      <module name="reactor-open" target="1.8" />
+      <module name="reactor-plateform" target="1.8" />
+      <module name="reactor-r2dbc-common" target="1.8" />
+      <module name="reactor-r2dbc-common-api" target="1.8" />
+      <module name="reactor-r2dbc-common-core" target="1.8" />
+      <module name="reactor-sba" target="1.8" />
+      <module name="reactor-service" target="1.8" />
+      <module name="reactor-simple" target="1.8" />
+      <module name="system" target="1.8" />
+      <module name="system-api" target="1.8" />
+      <module name="xiguaapp-pay-spring-boot" target="1.8" />
+      <module name="xiguaapp-pay-spring-boot-configuer" target="1.8" />
+      <module name="xiguaapp-pay-spring-boot-starter" target="1.8" />
+      <module name="xiguaapp-pay-spring-boot-starter-parent" target="1.8" />
+      <module name="xiguaapp-pay-spring-boot-starter-test" target="1.8" />
+      <module name="xiguaapp-reactor" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

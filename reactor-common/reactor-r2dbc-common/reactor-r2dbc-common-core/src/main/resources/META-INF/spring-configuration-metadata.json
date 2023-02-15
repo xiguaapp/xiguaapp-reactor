@@ -1,0 +1,73 @@
+{
+  "groups": [
+    {
+      "name": "easyorm",
+      "type": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties"
+    },
+    {
+      "name": "xiguaapp.default-value-generator",
+      "type": "com.cn.xiguaapp.r2dbc.common.core.generator.DefaultIdGenerator",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormConfiguration",
+      "sourceMethod": "defaultIdGenerator()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "easyorm.allow-alter",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "easyorm.allow-type-alter",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "easyorm.auto-ddl",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "easyorm.default-schema",
+      "type": "java.lang.String",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "defaultValue": "PUBLIC"
+    },
+    {
+      "name": "easyorm.dialect",
+      "type": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties$DialectEnum",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties"
+    },
+    {
+      "name": "easyorm.dialect-type",
+      "type": "java.lang.Class<? extends com.cn.xiguaapp.r2dbc.orm.rdb.metadata.dialect.Dialect>",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties"
+    },
+    {
+      "name": "easyorm.schema-type",
+      "type": "java.lang.Class<? extends com.cn.xiguaapp.r2dbc.orm.rdb.metadata.RDBSchemaMetadata>",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties"
+    },
+    {
+      "name": "easyorm.schemas",
+      "type": "java.lang.String[]",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.configuration.EasyormProperties",
+      "defaultValue": []
+    },
+    {
+      "name": "xiguaapp.default-value-generator.default-id",
+      "type": "java.lang.String",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.generator.DefaultIdGenerator"
+    },
+    {
+      "name": "xiguaapp.default-value-generator.mappings",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.cn.xiguaapp.r2dbc.common.core.generator.DefaultIdGenerator"
+    }
+  ],
+  "hints": []
+}

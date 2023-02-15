@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.hiwepy:webflux-swagger2-spring-boot-starter:1.0.2.RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/hiwepy/webflux-swagger2-spring-boot-starter/1.0.2.RELEASE/webflux-swagger2-spring-boot-starter-1.0.2.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/hiwepy/webflux-swagger2-spring-boot-starter/1.0.2.RELEASE/webflux-swagger2-spring-boot-starter-1.0.2.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/hiwepy/webflux-swagger2-spring-boot-starter/1.0.2.RELEASE/webflux-swagger2-spring-boot-starter-1.0.2.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

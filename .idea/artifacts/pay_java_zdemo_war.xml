@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pay-java-zdemo:war">
+    <output-path>$PROJECT_DIR$/reactor-common/common-pay/pay-java-core/pay-java-zdemo/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>pay-java-zdemo</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="pay-java-zdemo-1.0.1.REALESE.war">
+      <element id="artifact" artifact-name="pay-java-zdemo:war exploded" />
+    </root>
+  </artifact>
+</component>

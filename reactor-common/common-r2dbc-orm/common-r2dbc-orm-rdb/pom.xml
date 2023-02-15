@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~        Copyright (C) <2018-2028>  <@author: xiguaapp @date: @today>
+  ~        Send: 1125698980@qq.com
+  ~        This program is free software: you can redistribute it and/or modify
+  ~        it under the terms of the GNU General Public License as published by
+  ~        the Free Software Foundation, either version 3 of the License, or
+  ~        (at your option) any later version.
+  ~        This program is distributed in the hope that it will be useful,
+  ~        but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~        GNU General Public License for more details.
+  ~        You should have received a copy of the GNU General Public License
+  ~        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>common-r2dbc-orm</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>3.1.1-RED-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>common-r2dbc-orm-rdb</artifactId>
+    <description>关系型数据库实现,支持h2,Oracle,Mysql,PostgreSQL</description>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>io.projectreactor</groupId>-->
+<!--            <artifactId>reactor-test</artifactId>-->
+<!--            <version>3.2.8.RELEASE</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.miku</groupId>
+            <artifactId>r2dbc-mysql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-mssql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-spi</artifactId>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.oracle</groupId>-->
+<!--            <artifactId>ojdbc14</artifactId>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>common-r2dbc-orm-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>datagrap-common</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>1.0.1.REALESE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>datagrap-sqltemplate</artifactId>
+    <version>1.0.1.REALESE</version>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>datagrap-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>common-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>common-server</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

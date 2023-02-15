@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>xiguaapp-pay-spring-boot-starter-parent</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>1.0.1.REALESE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>xiguaapp-pay-spring-boot-starter-test</artifactId>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        <pay.version>1.0.1.REALESE</pay.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>xiguaapp-pay-spring-boot-starter</artifactId>
+            <version>1.0.1.REALESE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-alipay</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <!-- 这里测试不引入是否报错或者触发-->
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-wx</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-union</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-payoneer</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-paypal</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-wx-youdian</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cn.xiguaapp</groupId>
+            <artifactId>pay-java-fuiou</artifactId>
+            <version>${pay.version}</version>
+        </dependency>
+        <!--web应用基本环境配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--db-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--db-->
+    </dependencies>
+
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>reactor-service</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>3.1.1-RED-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.0.1.REALESE</version>
+    <description>数据服务中心</description>
+    <artifactId>datagrap</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>datagrap-cbr</module>
+        <module>datagrap-common</module>
+        <module>datagrap-dbms</module>
+        <module>datagrap-dbms-server</module>
+        <module>datagrap-interface</module>
+        <module>datagrap-whtc</module>
+    </modules>
+
+
+</project>

@@ -1,0 +1,24 @@
+  com.cn.xiguaapp.pay.java.common.bean.PayOrder介绍
+
+
+    1. subject 商品名称
+
+    2. body 商品描述简介(微信充当attach字段)
+
+    3. price 价格
+
+    4. outTradeNo 商户订单号
+
+    5. bankType  银行卡类型(银联等使用)
+
+    6. deviceInfo 设备号
+
+    7. authCode 付款条码串 
+
+    8. openid 微信等(支付用户标识)
+
+    9. transactionType 交易类型
+
+    10. curType 支付币种
+
+#### 以上信息是用于发起支付所需要使用的字段

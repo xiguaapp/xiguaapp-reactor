@@ -1,0 +1,136 @@
+下面的代码假设你已经有了一个PayService实例，怎么构造请看 [快速入门](支付宝_快速入门?parent=支付宝)
+
+```
+
+@RestController
+@RequestMapping
+public class PayController {
+
+    private PayService payService;
+
+    private PayMessageRouter router;
+
+    /**
+     * 这里对 PayService 与 router进行构造
+     */
+    @PostConstruct
+    public void init() {
+        ....
+    }
+
+    /**
+     * 跳到支付页面
+     * 针对实时支付,即时付款
+     *
+     * @return 跳到支付页面
+     */
+    @RequestMapping(value = "toPay.html", produces = "text/html;charset=UTF-8")
+    public String toPay() {
+
+        PayOrder order = new PayOrder("订单title", "摘要", new BigDecimal(0.01) , UUID.randomUUID().toString().replace("-", ""));
+
+        //H5支付
+        order.setTransactionType(WxTransactionType.MWEB);
+
+
+        //获取支付订单信息
+        Map orderInfo = payService.orderInfo(order);
+        //组装成html表单信息
+        return  payService.buildRequest(orderInfo, MethodType.POST);
+
+    }
+
+
+    /**
+     * 公众号支付
+     *
+     * @param  openid  微信公众号对应微信付款用户的唯一标识
+     * @return 返回jsapi所需参数
+     */
+    @RequestMapping(value = "jsapi" )
+    public Map jsapi(String openid) {
+
+
+        PayOrder order = new PayOrder("订单title", "摘要",  new BigDecimal(0.01) , UUID.randomUUID().toString().replace("-", ""));
+        //公众号支付
+        order.setTransactionType(WxTransactionType.JSAPI);
+        //微信公众号对应微信付款用户的唯一标识
+        order.setOpenid(openid);
+
+        Map orderInfo = payService.orderInfo(order);
+        orderInfo.put("code", 0);
+
+       return orderInfo;
+    }
+
+
+
+    /**
+     * 被动扫码付款(条码付)，刷卡付
+     * @param  authCode  条码信息
+     * @return 支付结果
+     */
+    @RequestMapping(value = "microPay")
+    public Map<String, Object> microPay(String authCode) throws IOException {
+
+
+        PayOrder order = new PayOrder("订单title", "摘要",  new BigDecimal(0.01), UUID.randomUUID().toString().replace("-", ""));
+
+        //刷卡付
+        order.setTransactionType(WxTransactionType.MICROPAY);
+
+
+        //设置授权码，条码等
+        order.setAuthCode(authCode);
+        //支付结果
+        Map<String, Object> params = payService.microPay(order);
+
+        //校验
+        if (payService.verify(params)) {
+            PayConfigStorage storage = payService.getPayConfigStorage();
+            PayMessage message = new PayMessage(params, storage.getPayType(), storage.getMsgType().name());
+            //支付校验通过后通过路由进行业务处理
+                router.route(message);
+
+        }
+        //这里开发者自行处理
+        return params;
+    }
+
+    /**
+     * 获取二维码图像
+     * 二维码支付
+     * @return 二维码图像
+     */
+    @RequestMapping(value = "toQrPay.jpg", produces = "image/jpeg;charset=UTF-8")
+    public byte[] toWxQrPay() throws IOException {
+        PayOrder order = new PayOrder("订单title", "摘要",  new BigDecimal(0.01), UUID.randomUUID().toString().replace("-", ""));
+         //扫码付
+        order.setTransactionType(WxTransactionType.NATIVE);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(payService.genQrPay(order), "JPEG", baos);
+        return baos.toByteArray();
+    }
+
+
+
+    /**
+     * 获取支付预订单信息
+     *
+     * @return 支付预订单信息
+     */
+    @RequestMapping("app")
+    public Map<String, Object> app() {
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("code", 0);
+        PayOrder order = new PayOrder("订单title", "摘要",  new BigDecimal(0.01) , UUID.randomUUID().toString().replace("-", ""));
+         //App支付
+        order.setTransactionType(WxTransactionType.APP);
+        data.put("orderInfo", payService.orderInfo(order));
+        return data;
+    }
+
+
+
+```

@@ -1,0 +1,37 @@
+server:
+  port: 6600
+spring:
+  r2dbc:
+    url: r2dbcs:mysql://root:123456.qq@ip:3306/xiguaapp_reactor?useUnicode=true&useSSL=false&characterEncoding=utf8
+    pool:
+      enabled: true
+      max-idle-time: 5000m
+      max-size: 72
+      initial-size: 20
+  application:
+    name: @artifactId@
+  profiles:
+    active: ${profile.name}
+  cloud:
+    nacos:
+      config:
+        namespace: ${config.namespace}
+        server-addr: ${config.server-addr}
+        shared-configs:
+          - base_rabbitmq.properties
+          - base_redis.properties
+          - base_common.yaml
+      discovery:
+        namespace: ${discovery.namespace}
+        server-addr: ${discovery.server-addr}
+
+  main:
+    allow-bean-definition-overriding: true
+#
+xiguaapp:
+  reactor:
+    signType: rsa
+    secret: 3322
+easyorm:
+  default-schema: xiguaapp_reactor
+  dialect: mysql

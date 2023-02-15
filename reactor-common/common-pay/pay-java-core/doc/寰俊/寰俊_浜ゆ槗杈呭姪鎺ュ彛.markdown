@@ -1,0 +1,259 @@
+
+交易辅助接口，主要是支付完成后的一系列操作：
+
+    1. 支付订单查询
+    2. 交易关闭接口
+    3. 申请退款接口
+    4. 查询退款
+    5. 下载对账单
+    6. 转账
+
+
+
+
+##### 简单使用，下面的代码假设你已经有了一个PayService实例，怎么构造请看 [快速入门](微信_快速入门?parent=微信)
+
+##### 支付订单查询
+```
+      Map result = payService.query("微信单号", "我方系统单号");
+```
+
+##### 交易关闭接口
+```
+        Map result = payService.query("微信单号", "我方系统单号");
+
+```
+
+##### 申请退款接口
+
+```
+  //过时方法
+ //Map result = service.refund("微信单号", "我方系统单号", "退款金额", "订单总金额");
+ //微信单号与我方系统单号二选一
+ RefundOrder order = new RefundOrder("微信单号", "我方系统单号", "退款金额", "订单总金额");
+ //可用于多次退款
+ order.setRefundNo("退款单号")
+ Map result = service.refund(order);
+```
+
+
+##### 查询退款
+```
+        Map result = payService.refundquery("微信单号", "我方系统单号");
+```
+
+
+
+##### 下载对账单
+```
+        Map result = payService.downloadbill("账单时间：日账单格式为yyyy-MM-dd，月账单格式为yyyy-MM", "账单类型");
+```
+
+---
+
+
+##### 转账
+>1. 转账到银行卡
+  ```java
+
+        order.setOutNo("partner_trade_no 商户转账订单号");
+        //采用标准RSA算法，公钥由微信侧提供,将公钥信息配置在PayConfigStorage#setKeyPublic(String)
+        order.setPayeeAccount("enc_bank_no 收款方银行卡号");
+        order.setPayeeName("收款方用户名");
+        order.setBank(WxBank.ABC);
+        order.setRemark("转账备注, 非必填");
+        order.setAmount(new BigDecimal(10));
+
+        //转账到银行卡，这里默认值是转账到银行卡
+         order.setTransferType(WxTransferType.PAY_BANK);
+        Map result = service.transfer(order);
+
+```
+>2. 转账到余额
+  ```java
+
+        order.setOutNo("partner_trade_no 商户转账订单号");
+        order.setPayeeAccount("用户openid");
+        order.setPayeeName("收款用户姓名， 非必填，如果填写将强制验证收款人姓名");
+        order.setRemark("转账备注, 非必填");
+        order.setAmount(new BigDecimal(10));
+
+        //转账到余额，这里默认值是转账到银行卡
+        order.setTransferType(WxTransferType.TRANSFERS);
+        Map result = service.transfer(order);
+
+```
+
+
+
+
+ #
+
+除了以上几种具体的指定方法去调用外,这里需要讲解一个特殊的方法 `#secondaryInterface` 通用方法，除了`申请退款`外的交易辅助接口都可以通过它来使用
+
+#### 简单案例，`支付订单查询`
+
+```
+    
+   Map result = payService.secondaryInterface(tradeNo, outTradeNo, AliTransactionType.QUERY,  new Callback<Map<String, Object>>() {
+            @Override
+            public Map<String, Object> perform(Map<String, Object> map) {
+                return map;
+            }
+        });
+```
+
+### #secondaryInterface
+
+```
+
+/**
+ *
+ * @param tradeNoOrBillDate 支付平台订单号或者账单类型， 具体请
+ *                          类型为{@link String }或者 {@link Date }，类型须强制限制，类型不对应则抛出异常{@link PayErrorException}
+ * @param outTradeNoBillType  商户单号或者 账单类型
+ * @param transactionType 交易类型
+ * @param callback 回调处理器
+ * @param <T> 返回类型
+ * @return 返回支付方对应接口的结果
+ */
+@Override
+public <T> T secondaryInterface(Object tradeNoOrBillDate, String outTradeNoBillType, TransactionType transactionType, Callback<T> callback);
+
+
+
+```
+`Callback`的作用，对支付方返回的结果做一些处理或者类型转换之类的
+```
+
+/**
+ * 回调，可用于类型转换
+ */
+public interface Callback<T> {
+     /**
+      * 执行者
+      * @param map 需要转化的map
+      * @return 处理过后的类型对象
+      */
+     T perform(Map<String, Object> map);
+
+}
+
+
+
+```
+
+
+
+
+
+##### 交易辅助接口对应方法
+
+```
+
+    /**
+     *  交易查询接口
+     * @param tradeNo 支付平台订单号
+     * @param outTradeNo 商户单号
+     * @return 返回查询回来的结果集，支付方原值返回
+     */
+    public Map<String, Object> query(String tradeNo, String outTradeNo);
+
+
+    /**
+     * 交易查询接口，带处理器
+     * @param tradeNo    支付平台订单号
+     * @param outTradeNo 商户单号
+     * @param callback 处理器
+     * @param <T> 返回类型
+     * @return  返回查询回来的结果集
+     */
+    public <T> T query(String tradeNo, String outTradeNo, Callback<T> callback);
+    
+    /**
+     * 交易关闭接口
+     *
+     * @param tradeNo    支付平台订单号
+     * @param outTradeNo 商户单号
+     * @return 返回支付方交易关闭后的结果
+     */
+    public Map<String, Object> close(String tradeNo, String outTradeNo);
+    
+    /**
+     * 交易关闭接口
+     *
+     * @param tradeNo    支付平台订单号
+     * @param outTradeNo 商户单号
+     * @param callback 处理器
+     * @param <T> 返回类型
+     * @return 返回支付方交易关闭后的结果
+     */
+    public <T> T close(String tradeNo, String outTradeNo, Callback<T> callback);
+    
+     /**
+     * 申请退款接口
+     *
+     * @param refundOrder   退款订单信息
+     * @return 返回支付方申请退款后的结果
+     */
+    Map<String, Object> refund(RefundOrder refundOrder);
+    /**
+     * 申请退款接口
+     *
+     * @param refundOrder   退款订单信息
+     * @param callback 处理器
+     * @param <T> 返回类型
+     * @return 返回支付方申请退款后的结果
+     */
+    <T>T refund(RefundOrder refundOrder, Callback<T> callback);
+
+    
+    /**
+     * 查询退款
+     *
+     * @param tradeNo    支付平台订单号
+     * @param outTradeNo 商户单号
+     * @return 返回支付方查询退款后的结果
+     */
+    public Map<String, Object> refundquery(String tradeNo, String outTradeNo);
+    
+    /**
+     * 查询退款
+     *
+     * @param tradeNo    支付平台订单号
+     * @param outTradeNo 商户单号
+     * @param callback 处理器
+     * @param <T> 返回类型
+     * @return 返回支付方查询退款后的结果
+     */
+    public <T> T refundquery(String tradeNo, String outTradeNo, Callback<T> callback);
+
+    /**
+     * 目前只支持日账单
+     * @param billDate 账单类型，商户通过接口或商户经开放平台授权后其所属服务商通过接口可以获取以下账单类型：trade、signcustomer；trade指商户基于微信交易收单的业务账单；signcustomer是指基于商户微信余额收入及支出等资金变动的帐务账单；
+     * @param billType 账单时间：日账单格式为yyyy-MM-dd，月账单格式为yyyy-MM。
+     * @return 返回支付方下载对账单的结果
+     */
+    public Map<String, Object> downloadbill(Date billDate, String billType);
+
+    /**
+     *  目前只支持日账单
+     * @param billDate 账单时间：具体请查看对应支付平台
+     * @param billType 账单类型，具体请查看对应支付平台
+     * @param callback 处理器
+     * @param <T> 返回类型
+     * @return 返回支付方下载对账单的结果
+     */
+    public <T> T downloadbill(Date billDate, String billType, Callback<T> callback);
+
+
+
+
+```
+
+
+
+
+
+
+

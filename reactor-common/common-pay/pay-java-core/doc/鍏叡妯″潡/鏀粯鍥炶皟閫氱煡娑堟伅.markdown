@@ -1,0 +1,15 @@
+ com.cn.xiguaapp.pay.java.common.bean.PayMessage 对象介绍
+
+    1. payMessage 支付回调消息集
+
+    2. msgType 消息类型
+
+    3. payType 支付类型 aliPay,wxPay等等(开发者自行定义，用于标识对应的支付模块)
+
+    3. transactionType 交易类型 APP支付，扫码付等等
+
+    4. fromPay
+
+    5. describe
+
+####以上信息是用于支付回掉路由规则寻找支付处理器使用。

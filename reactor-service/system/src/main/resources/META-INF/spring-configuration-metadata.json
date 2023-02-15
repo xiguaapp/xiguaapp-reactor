@@ -1,0 +1,28 @@
+ {
+  "groups": [
+    {
+      "name": "xiguaapp.reactor",
+      "type": "com.cn.xiguaapp.system.server.configuration.ReactorProperties",
+      "sourceType": "com.cn.xiguaapp.system.server.configuration.ReactorProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "xiguaapp.reactor.secret",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.reactor.secret.",
+      "sourceType": "com.cn.xiguaapp.system.server.configuration.ReactorProperties"
+    },
+    {
+      "name": "xiguaapp.reactor.sign-type",
+      "type": "java.lang.String",
+      "sourceType": "com.cn.xiguaapp.system.server.configuration.ReactorProperties"
+    },
+    {
+      "name": "xiguaapp.reactor.signType",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.reactor.signType."
+    }
+  ],
+  "hints": []
+}

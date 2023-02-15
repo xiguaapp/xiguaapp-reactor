@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>datagrap</artifactId>
+        <groupId>com.cn.xiguaapp</groupId>
+        <version>1.0.1.REALESE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>datagrap-cbr</artifactId>
+    <description>【报表系统】数据报表系统，报表元数据存储在数据库，可以通过前端进行动态配置报表的样式和数据查询功能</description>
+    <version>1.0.1.REALESE</version>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+    </properties>
+
+</project>

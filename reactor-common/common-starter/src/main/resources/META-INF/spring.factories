@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.cn.xiguaapp.common.starter.autoconfigure.RedisCacheAutoConfiguration,\
+  com.cn.xiguaapp.common.starter.autoconfigure.FeignAutoConfiguration,\
+  com.cn.xiguaapp.common.starter.autoconfigure.WebClientConfiguration

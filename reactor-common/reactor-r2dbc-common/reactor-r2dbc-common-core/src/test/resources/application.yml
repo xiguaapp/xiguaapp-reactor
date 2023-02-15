@@ -1,0 +1,19 @@
+logging:
+  level:
+    com.cn.xiguaapp: debug
+    org.springframework.transaction: debug
+    org.springframework.data.r2dbc.connectionfactory: debug
+#spring:
+#  r2dbc:
+#
+easyorm:
+  default-schema: xiguaapp
+  dialect: mysql
+spring:
+  r2dbc:
+    url: r2dbcs:mysql://root:123456.qq@ip:3306/xiguaapp?useUnicode=true&useSSL=false&characterEncoding=utf8
+    pool:
+      enabled: true
+      max-idle-time: 5000m
+      max-size: 72
+      initial-size: 20

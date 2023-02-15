@@ -1,0 +1,103 @@
+{
+  "properties": [
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-data-source-class-name",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-data-source-class-name."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.url",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.url."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.username",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.username."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.password",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.password."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.filters",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.filters."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.maxActive",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.maxActive."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.minIdle",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.minIdle."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.xa-properties.maxWait",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.xa-properties.maxWait."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.max-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.max-pool-size."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds.borrow-connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds.borrow-connection-timeout."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.xa-data-source-class-name",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.xa-data-source-class-name."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.xa-properties.url",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.xa-properties.url."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.xa-properties.username",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.xa-properties.username."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.xa-properties.password",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.xa-properties.password."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.max-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.max-pool-size."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.borrow-connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.borrow-connection-timeout."
+    },
+    {
+      "name": "xiguaapp.datasource.jta.test_ds2.init-timeout",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.jta.test_ds2.init-timeout."
+    },
+    {
+      "name": "xiguaapp.datasource.switcher.test.expression",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.switcher.test.expression."
+    },
+    {
+      "name": "xiguaapp.datasource.switcher.test.data-source-id",
+      "type": "java.lang.String",
+      "description": "Description for xiguaapp.datasource.switcher.test.data-source-id."
+    },
+    {
+      "name": "config.test",
+      "type": "java.lang.String",
+      "description": "Description for config.test."
+    }
+  ] }

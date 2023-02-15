@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.cn.xiguaapp.common.gateway.configuration.xiguaappGatewayAutoConfiguration,\
+  com.cn.xiguaapp.common.gateway.nacos.xiguaappRegisterAutoConfiguration

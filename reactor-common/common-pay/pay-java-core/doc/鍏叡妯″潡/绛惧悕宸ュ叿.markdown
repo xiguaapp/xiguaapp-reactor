@@ -1,0 +1,192 @@
+com.cn.xiguaapp.pay.java.common.util.sign 包下的对应类
+
+---
+
+#### SignUtils 枚举类 签名工具
+
+以下目前支持的3种签名方式
+    
+       
+    1. MD5
+    2. RSA 
+    3. RSA2
+       
+
+<br/>
+
+ #### SignUtils 签名工具讲解
+
+<br/>
+
+以下两个抽象方法，由具体的签名方式进行实现(比如以上3种签名方式)
+
+```
+
+    /**
+     * 签名
+     *
+     * @param content           需要签名的内容
+     * @param key               密钥
+     * @param characterEncoding 字符编码
+     * @return 签名值
+     */
+    public abstract String createSign(String content, String key, String characterEncoding);
+
+
+
+    /**
+     * 验签
+     *
+     * @param text              需要签名的字符串
+     * @param sign              需要验证的签名
+     * @param key               密钥
+     * @param characterEncoding 编码格式
+     * @return 验签结果
+     */
+    public abstract boolean verify(String text, String sign, String key, String characterEncoding);
+
+
+```
+
+已实现的签名与验签方法
+
+```
+
+    /**
+     * 签名
+     *
+     * @param parameters 需要进行排序签名的参数
+     * @param key 密钥
+     * @param characterEncoding 编码格式
+     * @return 签名值
+     */
+    public  String sign(Map parameters, String key, String characterEncoding);
+
+    /**
+     * 签名
+     * @param parameters 需要进行排序签名的参数
+     * @param key 密钥
+     * @param separator 分隔符  默认 &amp;
+     * @param characterEncoding 编码格式
+     * @return 签名值
+     */
+    public  String sign(Map parameters, String key, String separator, String characterEncoding);
+
+
+
+    /**
+     * 签名字符串
+     *
+     * @param params              需要签名的字符串
+     * @param sign              签名结果
+     * @param key               密钥
+     * @param characterEncoding 编码格式
+     * @return 签名结果
+     */
+    public  boolean verify(Map params, String sign, String key, String characterEncoding);
+
+
+
+```
+
+自然排序并拼装成对应的字符串
+
+```
+
+    /**
+     *
+     * 把数组所有元素排序，并按照“参数=参数值”的模式用"&"字符拼接成字符串
+     * <code>
+     *   body=描述&title=标题
+     *
+     *   </code>
+     * @param parameters 参数
+     * @return 去掉空值与签名参数后的新签名，拼接后字符串
+     */
+    public static String parameterText(Map parameters);
+
+
+
+    /**
+     *
+     * 把数组所有元素排序，并按照“参数=参数值”的模式用“@param separator”字符拼接成字符串
+     * @param parameters 参数
+     * @param separator 分隔符
+     * @return 去掉空值与签名参数后的新签名，拼接后字符串
+     */
+    public static String parameterText(Map parameters, String separator);
+
+
+
+    /**
+     *
+     * 把数组所有元素排序，并按照“参数=参数值”的模式用“@param separator”字符拼接成字符串
+     * @param parameters 参数
+     * @param separator 分隔符
+     * @param ignoreKey 需要忽略添加的key
+     * @return 去掉空值与签名参数后的新签名，拼接后字符串
+     */
+    public static String parameterText(Map parameters, String separator, String... ignoreKey );
+
+
+```
+
+拼接使用教程
+```
+
+    //第一个方式
+    Map<String, Object> data = new HashMap<String, Object>();
+    data.put("title", "标题");
+    data.put("body", "主题");
+    //这里str的结果是:  body=主题&title=标题
+    String str = parameterText(data);
+
+
+    
+    //第二个方式
+    Map<String, Object> data = new HashMap<String, Object>();
+    data.put("title", "标题");
+    data.put("body", "主题");
+    //这里str的结果是:  body=主题|title=标题
+    String str = parameterText(data, "|");
+
+    
+    //第三个方式
+    Map<String, Object> data = new HashMap<String, Object>();
+    data.put("title", "标题");
+    data.put("body", "主题");
+    data.put("appid", "1233");
+    //这里str的结果是:  body=主题|title=标题
+    String str = parameterText(data, "|", "appid");
+
+
+
+```
+
+
+
+
+数组式排序拼接
+
+```
+
+    /**
+     * 将参数集合(事前做好排序)按分割符号拼凑字符串并加密为MD5
+     * <code>
+     *   “&”   为分隔符
+     *   描述&标题
+     * </code>
+     * @param parameters 参数集合
+     * @param separator 分隔符
+     * @return 参数排序好的值
+     */
+    public static String  parameters2MD5Str(Object parameters, String separator)
+
+
+```
+
+
+
+<br/>
+<br/>
+<br/>

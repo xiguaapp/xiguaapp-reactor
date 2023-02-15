@@ -1,0 +1,40 @@
+server:
+  port: 4344
+spring:
+  application:
+    name: @artifactId@
+    admin:
+      enabled: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${discovery.server-addr}
+        namespace: ${discovery.namespace}
+  redis:
+    port: 6379
+    password: 123456.qq
+    host: ip
+  data:
+    redis:
+      repositories:
+        enabled: false
+  profiles:
+    active: ${profile.name}
+  security:
+    user:
+      name: sba
+      password: 123456
+  #  mail:
+#    host: smtp.qq.com
+#    username: chenxi19332
+#    password: gmkbhgbebuxtbjef
+  boot:
+    admin:
+#      notify:
+#        mail:
+#          to: 9022415@qq.com
+#          from: 1125698980@qq.com
+#          enabled: true
+#          ignore-changes: ""
+      ui:
+        title: xiguaapp-admin监控
